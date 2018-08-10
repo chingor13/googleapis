@@ -39,11 +39,11 @@ shell.run("mkdir dart_out".split(), cwd=generator)
 shell.run(f"dart bin/generate.dart package -o dart_out -i {client}/discovery/googleapis".split(), cwd=generator)
 
 # copy src, test, samples directories
-s.copy(generator / "dart_out", "generated/googleapis")
+s.copy(generator / "dart_out", "generated/googleapis", excludes=["pubspec.yaml"])
 
 log.debug("Generating all beta libraries.")
 shell.run("mkdir dart_out_beta".split(), cwd=generator)
 shell.run(f"dart bin/generate.dart package -o dart_out -i {client}/discovery/googleapis_beta".split(), cwd=generator)
 
 # copy src, test, samples directories
-s.copy(generator / "dart_out_beta", "generated/googleapis_beta")
+s.copy(generator / "dart_out_beta", "generated/googleapis_beta", excludes=["pubspec.yaml"])
